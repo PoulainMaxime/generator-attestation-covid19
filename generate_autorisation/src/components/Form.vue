@@ -1,6 +1,9 @@
 <template>
   <v-container id="capture">
     <v-app id="inspire">
+      <v-overlay :value="overlay">
+        <v-progress-circular indeterminate size="64"></v-progress-circular>
+      </v-overlay>
       <v-form ref="form">
         <v-text-field v-model="customerInfo.name" placeholder="Mme/M" required></v-text-field>
         <v-text-field
@@ -76,10 +79,12 @@ export default {
       signed_at: "",
       option: ""
     },
+    overlay: false,
     date: new Date().toLocaleString().split(",")[0]
   }),
   methods: {
     generatePdf() {
+      this.overlay = true;
       const data = document.getElementById("main");
       data.style.width = "1200px";
       data.style.height = "1200px";
@@ -96,6 +101,7 @@ export default {
           "ATTESTATION_DE_DÉPLACEMENT_DÉROGATOIRE-" + this.date + ".pdf"
         );
         data.style.width = window.innerWidth + "px";
+        this.overlay = false;
       });
     },
     undo() {
@@ -125,7 +131,7 @@ export default {
 .digit-sign {
   width: 100%;
   margin: 0 auto;
-  margin-bottom: 100px;
+  margin-bottom: 180px;
 }
 .groupe-btn {
   width: 100%;
