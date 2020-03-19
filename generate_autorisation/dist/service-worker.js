@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.017fde8a42f4b44ec123268964b37217.js"
+  "/precache-manifest.4a62097f61b305a2430bc06cb8e2202a.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "generate_autorisation"});
